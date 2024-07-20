@@ -9,15 +9,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4710632540985037429, guid: 51d3265c620f23c4ba5cfa79f975f1a2, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4946685223136398585, guid: 51d3265c620f23c4ba5cfa79f975f1a2, type: 3}
       propertyPath: m_Name
-      value: GameObject
+      value: GameObject Variant 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946685223136398585, guid: 51d3265c620f23c4ba5cfa79f975f1a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5376684633993571857, guid: 51d3265c620f23c4ba5cfa79f975f1a2, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376684633993571857, guid: 51d3265c620f23c4ba5cfa79f975f1a2, type: 3}
+      propertyPath: m_LocalAABB.m_Center.y
+      value: -74.33918
+      objectReference: {fileID: 0}
+    - target: {fileID: 5376684633993571857, guid: 51d3265c620f23c4ba5cfa79f975f1a2, type: 3}
+      propertyPath: m_LocalAABB.m_Extent.y
+      value: 113.90426
       objectReference: {fileID: 0}
     - target: {fileID: 8932920273668359050, guid: 51d3265c620f23c4ba5cfa79f975f1a2, type: 3}
       propertyPath: m_RootOrder
