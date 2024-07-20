@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private bool isDragging;
     private float zCoord, verticalOffset;
 
-    public float speed = 5.0f; // Speed of the movement
+    public float speed = 30f; // Speed of the movement
     public float dragThreshold;
     void Start()
     {
