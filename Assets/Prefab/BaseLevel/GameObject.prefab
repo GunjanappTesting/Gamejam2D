@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 850015890072765635}
   - component: {fileID: 850015890072765637}
   - component: {fileID: 850015890072765634}
+  - component: {fileID: 595699114251185927}
   m_Layer: 0
   m_Name: down
   m_TagString: Untagged
@@ -233,6 +234,28 @@ MonoBehaviour:
   m_EnableTangents: 0
   m_GeometryCached: 0
   m_UTess2D: 0
+--- !u!68 &595699114251185927
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850015890072765632}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -728.53394, y: -16.473217}
+  - {x: 7106.5674, y: -16.473217}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1023007214405589577
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +346,7 @@ GameObject:
   - component: {fileID: 5334001888575488221}
   - component: {fileID: 2684544805927073}
   - component: {fileID: 3460042327648353311}
+  - component: {fileID: 2854990807742742622}
   m_Layer: 0
   m_Name: up
   m_TagString: Untagged
@@ -545,3 +569,25 @@ MonoBehaviour:
   m_EnableTangents: 0
   m_GeometryCached: 0
   m_UTess2D: 0
+--- !u!68 &2854990807742742622
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019496852301828365}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -728.53394, y: -62.893707}
+  - {x: 7106.5674, y: -62.893707}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
