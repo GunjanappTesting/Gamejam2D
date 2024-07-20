@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class MoveLeft : MonoBehaviour
 {
-    public float speed;
-    public void SetSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-    }
-
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        transform.Translate(Vector3.left * GameManager.BackgrounfSpeed * Time.deltaTime);
+        if (transform.position.x < -125f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

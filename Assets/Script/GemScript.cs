@@ -5,6 +5,7 @@ using UnityEngine;
 public class GemScript : MonoBehaviour
 {
     public AbilityObjects ability;
+    public bool isDestroybal;
     public enum AbilityObjects
     {
         NoDeathGem = 0,
@@ -12,5 +13,11 @@ public class GemScript : MonoBehaviour
         ResizeGem = 2,
         ExtraLifeGem = 3,
         Obstracles=4
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!isDestroybal) return;
+        Destroy(gameObject);
     }
 }

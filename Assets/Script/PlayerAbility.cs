@@ -9,12 +9,10 @@ public class PlayerAbility : MonoBehaviour
     private bool isNoDeathActive = false;
     private float noDeathDuration = 10f;
     private float noDeathTimer = 0f;
-    public TextMeshProUGUI noDeathIndicator;
-  
+    
     // For BackGround Slow Ability
     private bool isSlowSpeedActive = false;
     private float slowSpeedDuration = 10f;
-    public TextMeshProUGUI slowSpeed;
     private float slowSpeedTimer = 0f;
     private float originalBackgroundSpeed;
     public float slowBackgroundSpeed = 0.5f;
@@ -22,37 +20,36 @@ public class PlayerAbility : MonoBehaviour
 
     // For Resize Player
     private bool isResizeActive = false;
-    public TextMeshProUGUI playerResizeTimer ;
     private float resizeDuration = 10f;
     private float resizeTimer = 0f;
     private Vector3 originalSize;
+    private Rigidbody2D rb;
     public Vector3 resizedSize = new Vector3(0.5f, 0.5f, 0.5f);
     //for Extra Life
     private int lives = 1;
-    public TextMeshProUGUI lifeCounter;
     private int maxLives = 2;
 
 
     private Collider2D playerCollider;
-    public GameObject background;
+    public ObstacleGenerator obstaclGen;
 
     void Start()
     {
         playerCollider = GetComponent<Collider2D>();
-        originalBackgroundSpeed = backgroundSpeed;
+      /*  originalBackgroundSpeed = backgroundSpeed;*/
         originalSize = transform.localScale;
     }
 
     void Update()
     {
-            lifeCounter.text = "Life Count:" + Mathf.Ceil(lives).ToString();
+            //lifeCounter.text = "Life Count:" + Mathf.Ceil(lives).ToString();
         if (lives>0)
         {
-            MoveBackground();
+            //MoveBackground();
             if (isNoDeathActive)
             {
                 noDeathTimer -= Time.deltaTime;
-                noDeathIndicator.text = "No Death: " + Mathf.Ceil(noDeathTimer).ToString();
+                //noDeathIndicator.text = "No Death: " + Mathf.Ceil(noDeathTimer).ToString();
                 if (noDeathTimer <= 0)
                 {
                     DeactivateNoDeath();
@@ -61,7 +58,7 @@ public class PlayerAbility : MonoBehaviour
             if (isSlowSpeedActive)
             {
                 slowSpeedTimer -= Time.deltaTime;
-                slowSpeed.text = "Slow Speed Timer:" + Mathf.Ceil(slowSpeedTimer).ToString();
+                //slowSpeed.text = "Slow Speed Timer:" + Mathf.Ceil(slowSpeedTimer).ToString();
                 if (slowSpeedTimer <= 0)
                 {
                     DeactivateSlowSpeed();
@@ -70,7 +67,7 @@ public class PlayerAbility : MonoBehaviour
             if (isResizeActive)
             {
                 resizeTimer -= Time.deltaTime;
-                playerResizeTimer.text = "Player Resize in:" + Mathf.Ceil(resizeTimer).ToString();
+                //playerResizeTimer.text = "Player Resize in:" + Mathf.Ceil(resizeTimer).ToString();
                 if (resizeTimer <= 0)
                 {
                     DeactivateResize();
@@ -106,13 +103,14 @@ public class PlayerAbility : MonoBehaviour
     }
     void MoveBackground()
     {
-        background.transform.Translate(Vector3.left * backgroundSpeed * Time.deltaTime);
+        obstaclGen.distance = 500;
     }
     void ActivateSlowSpeed()
     {
+        //GameManager.BackgrounfSpeed = 
         isSlowSpeedActive = true;
         slowSpeedTimer = slowSpeedDuration;
-        backgroundSpeed = slowBackgroundSpeed;
+        GameManager.BackgrounfSpeed = slowBackgroundSpeed;
     }
 
     void DeactivateSlowSpeed()
@@ -146,16 +144,16 @@ public class PlayerAbility : MonoBehaviour
         Debug.Log("ActivingNoDeath");
         ActivateNoDeath();
     }
-    void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        Debug.Log("Collision Detected");
         switch (collision.GetComponent<GemScript>().ability)
         {
-             case GemScript.AbilityObjects.NoDeathGem:
+            case GemScript.AbilityObjects.NoDeathGem:
                 if (!isNoDeathActive)
                 {
                     Debug.Log("TriggeringNoDeath");
+                    Destroy(collision.gameObject);
                     TriggerNoDeathAbility();
                 }
                 else
@@ -165,37 +163,42 @@ public class PlayerAbility : MonoBehaviour
                 if (!isSlowSpeedActive)
                 {
                     TriggerSlowSpeedAbility();
+                    Destroy(collision.gameObject);
                 }
                 break;
             case GemScript.AbilityObjects.ResizeGem:
                 if (!isResizeActive)
                 {
                     TriggerResizeAbility();
+                    Destroy(collision.gameObject);
                 }
 
                 break;
             case GemScript.AbilityObjects.ExtraLifeGem:
                 AddLife();
-                break;
-            case GemScript.AbilityObjects.Obstracles:
-                if (lives > 0)
-                {
-                    lives--;
-                    if (lives <= 0)
-                    {
-                        Debug.Log("Game Over!");
-                    }
-                    else
-                    {
-                        Debug.Log("Lost a life! Remaining lives: " + lives);
-                    }
-                }
-                break;
-
-            default:
+                Destroy(collision.gameObject);
                 break;
         }
-    
     }
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision Detected");
+        if (collision.transform.GetComponent<GemScript>())
+        {
+            Debug.Log(lives);
+            if (lives > 0)
+            {
+                lives--;
+                if (lives <= 0)
+                {
+                    GameManager.PlayerHitFired?.Invoke();
+                }
+                else
+                {
+                    Debug.Log("Lost a life! Remaining lives: " + lives);
+                }
+            }
+        }
+    }
+
 }
