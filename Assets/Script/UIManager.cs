@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public Text scoreText;
-    public Text runTimeScoreText;
+    public TMP_Text runTimeScoreText;
     public Text bestScoreText;
     public GameObject replayPanel,playPanal;
     public Button replayButton, playButton;
@@ -13,7 +14,7 @@ public class UIManager : MonoBehaviour
     private float score = 0f;
     private float bestScore = 0f;
 
-    void Awake()
+    void Start()
     {
         InitializeUI();
     }

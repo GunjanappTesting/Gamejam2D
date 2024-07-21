@@ -45,7 +45,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -77,7 +77,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 0.90188676, g: 0.1412388, b: 0.1412388, a: 1}
+  m_Color: {r: 0.14901961, g: 0.05882353, b: 0.14901961, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites: []
@@ -413,7 +413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3f8b67b216b0e4f8ce423cbcdc8d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
 --- !u!1 &2848241700758335183
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +489,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -522,7 +521,7 @@ SpriteShapeRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Color: {r: 0.90188676, g: 0.1412388, b: 0.1412388, a: 1}
+  m_Color: {r: 0.14901961, g: 0.05882353, b: 0.14901961, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 2800000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
   m_Sprites: []

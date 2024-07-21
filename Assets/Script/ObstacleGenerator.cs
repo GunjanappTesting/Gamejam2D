@@ -16,6 +16,8 @@ public class ObstacleGenerator : MonoBehaviour
 
     public List<MoveLeft> allSpawnPrefab;
 
+    private Transform lastCreatedObject;
+
     private void OnEnable()
     {
         GameManager.PlayerHitFired += GameEndFunction;
@@ -53,9 +55,16 @@ public class ObstacleGenerator : MonoBehaviour
     {
         GameObject prefabToSpawn = prefabs[Random.Range(0, prefabs.Count)];
         Vector3 spawnPosition = new Vector3(lastSpawnXPosition, 0, 0);
+        if (lastCreatedObject)
+        {
+            lastSpawnXPosition += lastCreatedObject.transform.position.x +distance;
+        }
+
+       
         MoveLeft spawnedPrefab = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity).GetComponent<MoveLeft>();
         allSpawnPrefab.Add(spawnedPrefab);
-        lastSpawnXPosition += distance;
+        lastCreatedObject = spawnedPrefab.transform;
+        
     }
 
     public void GameEndFunction()

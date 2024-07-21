@@ -7,27 +7,31 @@ public class PlayerAbility : MonoBehaviour
 {
     // For No Death Gem Ability
     private bool isNoDeathActive = false;
-    private float noDeathDuration = 10f;
+    private float noDeathDuration = 5f;
     private float noDeathTimer = 0f;
+    public TMP_Text noDeathTimerCounter;
     
     // For BackGround Slow Ability
     private bool isSlowSpeedActive = false;
-    private float slowSpeedDuration = 10f;
+    private float slowSpeedDuration = 5f;
     private float slowSpeedTimer = 0f;
     private float originalBackgroundSpeed;
     public float slowBackgroundSpeed = 0.5f;
     public float backgroundSpeed = 2f;
+    public TMP_Text SlowTimeCounter;
 
     // For Resize Player
     private bool isResizeActive = false;
-    private float resizeDuration = 10f;
+    private float resizeDuration = 5f;
     private float resizeTimer = 0f;
     private Vector3 originalSize;
     private Rigidbody2D rb;
     public Vector3 resizedSize = new Vector3(0.5f, 0.5f, 0.5f);
+    public TMP_Text resizeTimeCounter;
     //for Extra Life
     private int lives = 1;
     private int maxLives = 2;
+    public TMP_Text lifeCounter;
 
 
     private Collider2D playerCollider;
@@ -42,14 +46,14 @@ public class PlayerAbility : MonoBehaviour
 
     void Update()
     {
-            //lifeCounter.text = "Life Count:" + Mathf.Ceil(lives).ToString();
+        lifeCounter.text = "Life Count:" + Mathf.Ceil(lives).ToString();
         if (lives>0)
         {
             //MoveBackground();
             if (isNoDeathActive)
             {
                 noDeathTimer -= Time.deltaTime;
-                //noDeathIndicator.text = "No Death: " + Mathf.Ceil(noDeathTimer).ToString();
+                noDeathTimerCounter.text = "No Death: " + Mathf.Ceil(noDeathTimer).ToString();
                 if (noDeathTimer <= 0)
                 {
                     DeactivateNoDeath();
@@ -58,7 +62,7 @@ public class PlayerAbility : MonoBehaviour
             if (isSlowSpeedActive)
             {
                 slowSpeedTimer -= Time.deltaTime;
-                //slowSpeed.text = "Slow Speed Timer:" + Mathf.Ceil(slowSpeedTimer).ToString();
+                SlowTimeCounter.text = "Slow Speed Timer:" + Mathf.Ceil(slowSpeedTimer).ToString();
                 if (slowSpeedTimer <= 0)
                 {
                     DeactivateSlowSpeed();
@@ -67,7 +71,7 @@ public class PlayerAbility : MonoBehaviour
             if (isResizeActive)
             {
                 resizeTimer -= Time.deltaTime;
-                //playerResizeTimer.text = "Player Resize in:" + Mathf.Ceil(resizeTimer).ToString();
+                resizeTimeCounter.text = "Player Resize in:" + Mathf.Ceil(resizeTimer).ToString();
                 if (resizeTimer <= 0)
                 {
                     DeactivateResize();
@@ -197,6 +201,7 @@ public class PlayerAbility : MonoBehaviour
                 {
                     Debug.Log("Lost a life! Remaining lives: " + lives);
                 }
+                //rb.AddForce()
             }
         }
     }
