@@ -61,15 +61,9 @@ public class ObstacleGenerator : MonoBehaviour
     public void GameEndFunction()
     {
         GameManager.isAlive = false;
-        StartCoroutine(ReduceTimeScale());
-        /* Time.timeScale = 0;
-         GameManager.GameEnd?.Invoke();*/
-        /*StartCoroutine(ReduceTimeScale());
-        cameraHold.DOShakePosition(1f, 1f, 1);*/
-        /*.OnComplete(() =>
-            cameraHold.DOMoveX(5f, 5f).SetEase(Ease.InElastic)
-        );*/
-
+        Time.timeScale = 0;
+        GameManager.GameEnd?.Invoke();
+        SoundManager.Instance.EndSFXSound();
     }
     private IEnumerator ReduceTimeScale()
     {

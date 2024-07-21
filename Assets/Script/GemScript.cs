@@ -6,6 +6,7 @@ public class GemScript : MonoBehaviour
 {
     public AbilityObjects ability;
     public bool isDestroybal;
+    public AudioClip audioClip;
     public enum AbilityObjects
     {
         NoDeathGem = 0,
@@ -18,6 +19,7 @@ public class GemScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isDestroybal) return;
+        SoundManager.Instance.PlaySFXSound(audioClip);
         Destroy(gameObject);
     }
 }

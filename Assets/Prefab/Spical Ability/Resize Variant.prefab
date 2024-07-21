@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: 2
   isDestroybal: 1
+  audioClip: {fileID: 8300000, guid: ace3122ea0dab3041bde86ecb484ccc3, type: 3}
 --- !u!1001 &4439379172240920873
 PrefabInstance:
   m_ObjectHideFlags: 0

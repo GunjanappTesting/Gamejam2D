@@ -38,10 +38,13 @@ public class UIManager : MonoBehaviour
 
     private void InitializeUI()
     {
+        Time.timeScale = 0;
+        playPanal.SetActive(true);
+        replayPanel.SetActive(false); 
+
         replayButton.onClick.AddListener(ReplayGame);
-        //playButton.onClick.AddListener(ReplayGame);
-        replayPanel.SetActive(false);
-        //playPanal.SetActive(true);
+        playButton.onClick.AddListener(PlayGame);
+        
         bestScore = PlayerPrefs.GetFloat("BestScore", 0f);
         bestScoreText.text = "Best Score: " + bestScore.ToString("0");
 
@@ -69,9 +72,16 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         GameManager.isAlive = true;
         replayPanel.SetActive(false);
-        //playPanal.SetActive(false);
+        playPanal.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    
+    private void PlayGame()
+    {
+        Time.timeScale = 1;
+        GameManager.isAlive = true;
+        replayPanel.SetActive(false);
+        playPanal.SetActive(false);
+        SoundManager.Instance.startSFXSound();
+    }
 }
