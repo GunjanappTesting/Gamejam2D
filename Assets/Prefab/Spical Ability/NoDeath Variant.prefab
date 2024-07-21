@@ -12,6 +12,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2003811219988568027, guid: dd998c995b1fd60459129b7761216537, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 85fd1219b52f2814fb801b8ee3c08859, type: 3}
+    - target: {fileID: 2003811219988568027, guid: dd998c995b1fd60459129b7761216537, type: 3}
       propertyPath: isDestroybal
       value: 1
       objectReference: {fileID: 0}
