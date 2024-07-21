@@ -14,9 +14,8 @@ public class ObstacleGenerator : MonoBehaviour
     private float lastSpawnXPosition;
     private Camera mainCamera;
 
-    public List<MoveLeft> allSpawnPrefab;
-
     private Transform lastCreatedObject;
+    [SerializeField]private GameObject startLevel;
 
     private void OnEnable()
     {
@@ -32,6 +31,7 @@ public class ObstacleGenerator : MonoBehaviour
     {
         Initialize();
         StartCoroutine(SpawnPrefabs());
+        Application.targetFrameRate = 60;
     }
 
     private void Initialize()
@@ -43,7 +43,9 @@ public class ObstacleGenerator : MonoBehaviour
     IEnumerator SpawnPrefabs()
     {
         yield return new WaitForSeconds(1f);
-
+        Vector3 spawnPosition = new Vector3(lastSpawnXPosition, 0, 0);
+        MoveLeft spawnedPrefab = Instantiate(startLevel, spawnPosition, Quaternion.identity).GetComponent<MoveLeft>();
+        lastCreatedObject = spawnedPrefab.transform;
         while (GameManager.isAlive)
         {
             SpawnPrefab();
@@ -54,15 +56,12 @@ public class ObstacleGenerator : MonoBehaviour
     private void SpawnPrefab()
     {
         GameObject prefabToSpawn = prefabs[Random.Range(0, prefabs.Count)];
-        Vector3 spawnPosition = new Vector3(lastSpawnXPosition, 0, 0);
         if (lastCreatedObject)
         {
-            lastSpawnXPosition += lastCreatedObject.transform.position.x +distance;
+            lastSpawnXPosition = lastCreatedObject.transform.position.x +distance;
         }
-
-       
+        Vector3 spawnPosition = new Vector3(lastSpawnXPosition, 0, 0);
         MoveLeft spawnedPrefab = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity).GetComponent<MoveLeft>();
-        allSpawnPrefab.Add(spawnedPrefab);
         lastCreatedObject = spawnedPrefab.transform;
         
     }
