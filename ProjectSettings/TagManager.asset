@@ -4,12 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - apple
-  - orange
-  - banana
-  - grapes
-  - cucumber
-  - mango
+  - InHouseImage
+  - dust
+  - car
   layers:
   - Default
   - TransparentFX
